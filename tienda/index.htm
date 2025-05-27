@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Pineria</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        
+        .cart-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .cart-item img {
+            width: 50px;
+            margin-right: 10px;
+        }
+
+        .cart-item button {
+            margin-left: 10px;
+        }
+        
+        #formulario-pago {
+            display: none;
+            margin-top: 20px;
+        }
+
+        #formulario-pago input {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            box-sizing: border-box;
+        }
+
+        #formulario-pago button {
+            background-color: rgb(243, 66, 66);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        #formulario-pago button:hover {
+            background-color: rgb(204, 18, 49);
+
+ 
+        }
+        ticket-modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: 999;
+}
+
+.modal-contenido {
+  background: white;
+  margin: 10% auto;
+  padding: 20px;
+  max-width: 400px;
+  border-radius: 10px;
+  position: relative;
+}
+    </style>
+    
+</head>
+<body>
+    <div id="carrito-modal" class="modal">
+        <div class="modal-contenido">
+            <span class="cerrar" id="cerrar-carrito">&times;</span>
+            <h2>Carrito de compras</h2>
+            <ul id="lista-carrito"></ul>
+            <p>Total: $<span id="total">0.00</span></p>
+            <button id="pagar">Pagar</button>
+            
+            <form id="formulario-pago">
+                <h3>Información de pago</h3>
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required>
+
+                <label for="correo">Correo electrónico:</label>
+                <input type="email" id="correo" name="correo" required>
+
+                <label for="direccion">Dirección:</label>
+                <input type="text" id="direccion" name="direccion" required>
+
+                <button type="submit">Finalizar compra</button>
+            </form>
+        </div>
+    </div>
+
+    <header>
+        <img src="img/8.webp" alt="Pin Cienpies" />
+        <h1>Pineria</h1>
+        <nav class="menu" id="menu">
+            <a href="#" id="btn-inicio"><i class="fas fa-house"></i> Inicio</a>
+            <a href="#" id="btn-metalicos"><i class="fas fa-thumbtack"></i> Pines Metálicos</a>
+            <a href="#contacto"><i class="fas fa-phone"></i> Contacto</a>
+            <button id="ver-carrito" class="menu-btn">Carrito
+                 <i class="fas fa-shopping-cart"></i> 
+            </button>
+               
+        </nav>
+    </header>
+
+    <section class="intro">
+        <h2>¡Bienvenido a Pinería!</h2>
+        <p>
+            En Pinería encuentras arte en miniatura, pines originales y metálicos con diseños únicos con estilo.
+            Todos nuestros productos están diseñados con personalidad.
+        </p>
+        <p>
+            Explora nuestras colecciones y encuentra el pin perfecto para ti o para regalar.
+        </p>
+    </section>
+
+    <main>
+        <section class="productos" id="seccion-inicio">
+            <h2 style="width: 100%; text-align: center;">Pines OG</h2>
+
+            <article class="producto">
+                <img src="img/jackst.jpeg" alt="Pin Jack" />
+                <h2>Pin Jack</h2>
+                <p>$20.00 MX</p>
+                <button>Añadir al carrito</button>
+            </article>
+
+            <article class="producto">
+                <img src="img/cienpies.jpg" alt="Pin Cienpies" />
+                <h2>Pin Cienpies</h2>
+                <p>$25.00 MX</p>
+                <button>Añadir al carrito</button>
+            </article>
+
+            <article class="producto">
+                <img src="img/tvgirl.jpeg" alt="Pin Love Rock" />
+                <h2>Pin Love Rock</h2>
+                <p>$25.50 MX</p>
+                <button>Añadir al carrito</button>
+            </article>
+
+            <article class="producto">
+                <img src="img/laceys.jpeg" alt="Pin Laceys" />
+                <h2>Pin Laceys</h2>
+                <p>$20.00 MX</p>
+                <button>Añadir al carrito</button>
+            </article>
+
+            <article class="producto">
+                <img src="img/punpun.jpeg" alt="Pin Punpun" />
+                <h2>Pin Punpun</h2>
+                <p>$30.00 MX</p>
+                <button>Añadir al carrito</button>
+            </article>
+
+            <article class="producto">
+                <img src="img/korn.jpeg" alt="Pin Korn" />
+                <h2>Pin Korn</h2>
+                <p>$25.00 MX</p>
+                <button>Añadir al carrito</button>
+            </article>
+        </section>
+
+        <section class="productos" id="seccion-metalicos" style="display: none;">
+            <h2 style="width: 100%; text-align: center;">Pines Metálicos</h2>
+
+            <article class="producto">
+                <img src="img/hn.jpeg" alt="Pin Hollow Night" />
+                <h2>Pin Hollow Night</h2>
+                <p>$40.00 MX</p>
+                <button>Añadir al carrito</button>
+            </article>
+
+            <article class="producto">
+                <img src="img/shake.jpeg" alt="Pin Shake" />
+                <h2>Pin Shake</h2>
+                <p>$35.00 MX</p>
+                <button>Añadir al carrito</button>
+            </article>
+
+            <article class="producto">
+                <img src="img/snorlax.jpeg" alt="Pin Snorlax" />
+                <h2>Pin Snorlax</h2>
+                <p>$35.00 MX</p>
+                <button>Añadir al carrito</button>
+            </article>
+
+            <article class="producto">
+                <img src="img/sh.jpeg" alt="Pin Silent Hill" />
+                <h2>Pin Silent Hill</h2>
+                <p>$30.00 MX</p>
+                <button>Añadir al carrito</button>
+            </article>
+
+            <article class="producto">
+                <img src="img/southp.jpeg" alt="Pin South Park" />
+                <h2>Pin South Park</h2>
+                <p>$40.00 MX</p>
+                <button>Añadir al carrito</button>
+            </article>
+
+            <article class="producto">
+                <img src="img/glob.jpeg" alt="Pin Glob" />
+                <h2>Pin Glob</h2>
+                <p>$30.00 MX</p>
+                <button>Añadir al carrito</button>
+            </article>
+        </section>
+    </main>
+
+   <footer>
+    <section id="contacto" class="contacto">
+        <h2>Contacto</h2>
+        <p>¡Gracias por visitar nuestra tienda! Si tienes alguna duda o pregunta, no dudes en ponerte en contacto conmigo.</p>
+        <p>Si deseas ver todo el catalogo, puedes visitar la paguina de ig o contactarme a través de WhatsApp para un diseño personalizado:</p>
+
+        <div class="social-icons">
+            <a href="https://www.instagram.com/pineria666?igsh=ZnpoNGpuOG1nM2ln&utm_source=qr" target="_blank" title="Sígueme en Instagram">
+                <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png"
+                    alt="Instagram"
+                    class="instagram-icon">
+            </a>
+
+            <a href="https://wa.me/4422370749" target="_blank" title="Contáctame por WhatsApp">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="whatsapp-icon">
+            </a>
+        </div>
+    </section>
+    <p>&copy; Nani Caneda.</p>
+</footer>
+
+
+    <script src="script.js"></script>
+
+    <div id="ticket-modal" class="modal">
+  <div class="modal-contenido">
+    <span class="cerrar" onclick="cerrarTicket()">&times;</span>
+    <h3>🧾 Ticket de Compra</h3>
+    <div id="detalle-ticket"></div>
+    <button onclick="imprimirTicket()">Imprimir Ticket</button>
+  </div>
+</div>
+<div id="toast" style="
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #ff6666;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    display: none;
+    font-weight: bold;
+    z-index: 9999;
+    transition: opacity 0.3s ease;
+">
+    Producto añadido al carrito
+</div>
+
+
+</body>
+</html>
